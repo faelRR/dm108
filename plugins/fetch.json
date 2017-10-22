@@ -10,7 +10,7 @@
     "cordova-plugin-statusbar": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-statusbar@2.2.3"
+            "id": "cordova-plugin-statusbar@^2.2.3"
         },
         "is_top_level": true,
         "variables": {}
@@ -26,7 +26,7 @@
     "cordova-plugin-nativestorage": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-nativestorage"
+            "id": "cordova-plugin-nativestorage@^2.2.2"
         },
         "is_top_level": true,
         "variables": {}

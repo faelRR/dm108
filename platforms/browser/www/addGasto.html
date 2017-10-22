@@ -13,13 +13,12 @@
       <div class="page-content">
         <div class="content-block-title">Gasto</div>
         <div class="list-block">
-          <ul>         
+          <ul style="padding-top: 10px">         
             <li>
               <div class="item-content">
-                <div class="item-media"><i class="icon icon-form-titulo"></i></div>
+                <div class="item-media"><i class="icon f7-icons">card</i></div>
                 <div class="item-inner"> 
                   <div class="item-input">
-                    <input type="hidden" name="id" id="id" value="{{url_query.id}}"/> 
                     <input type="text" name="descricao" id="descricao" value="{{url_query.descricao}}" 
                     placeholder="Com o que gastei ?"/>
                   </div>
@@ -27,18 +26,18 @@
               </div>
             </li>
             <li>
-              <div class="item-content">
-                <div class="item-media"><i class="icon icon-form-quando"></i></div>
-                <div class="item-inner"> 
-                  <div class="item-input">
-                    <input type="date" name="data" id="data" value="{{url_query.data}}" placeholder="Quando ?"/>
+                <div class="item-content">
+                  <div class="item-media"><i class="icon f7-icons">calendar</i></div>
+                  <div class="item-inner"> 
+                    <div class="item-input">
+                      <input type="date" name="data" id="data" value="{{url_query.data}}" placeholder="Quando ?"/>
+                    </div>
                   </div>
                 </div>
-              </div>
             </li>
             <li>
                <div class="item-content">
-                <div class="item-media"><i class="icon icon-form-quando"></i></div>
+                <div class="item-media"><i class="icon f7-icons">money_dollar</i></div>
                 <div class="item-inner"> 
                   <div class="item-input">
                     <input type="number" name="valor" id="valor" value="{{url_query.valor}}" placeholder="Quanto ?"/>
@@ -47,11 +46,17 @@
               </div>
             </li>
           </ul>
-          <div class="buttons-row">
-            <a href="#" id="cancel" name="cancel" class="button button-fill color-orange">Cancel</a>
-            <a href="#" id="save" name="save" class="button button-fill color-purple">Save</a>
-            <input type="hidden" name="edit" id="edit" value="{{url_query.id}}">
-          </div>
+          
+          <div class="row" style="margin: 10px">
+            <div class="col-50">
+              <a href="#" id="cancel" name="cancel" class="button button-round button-fill color-orange">Cancelar</a>
+            </div>
+            <div class="col-50">
+              <a href="#" id="save" name="save" class="button button-round button-fill color-purple">Salvar</a>
+            </div>
+            <input type="hidden" name="id" id="id" value="{{url_query.id}}">
+          </div>        
+
         </div>
         </div>
       </div>

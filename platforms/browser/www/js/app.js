@@ -46,7 +46,7 @@ var mainView = myApp.addView('.view-main', {
 //evento especifico do cordova
 $$(document).on('deviceready', function() {
     // init statu bar
-    //Statusbar.backgoundColorByHexString("#EE7600");
+    //Statusbar.backgoundColorByHexString("#FF5722");
 
     // Dialog nativo
     //navigator.notification.alert( 'Minha mensagem!', app.alertCallback, 'Meu título', 'Salvar' ); 

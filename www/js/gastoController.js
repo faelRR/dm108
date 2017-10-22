@@ -70,11 +70,9 @@ var GastoController = {
                         '  <a href="addGasto.html?id={{id}}&descricao={{descricao}}&data={{data}}&valor={{valor}}" class="item-link item-content">'+
                         '    <div class="item-inner">'+
                         '      <div class="item-title-row">' +
-                        '        <div class="item-title">{{descricao}}</div>' +
+                        '        <div class="item-title">{{descricao}} - R$ {{valor}} </div>' +
                         '        <div class="item-after">{{data}}</div>' +
                         '      </div>' +
-                        '      <div class="item-subtitle">New messages from John Doe</div>' +
-                        '      <div class="item-text">Lorem ipsum dolor sit amet...</div>' +
                         '    </div>' +
                         '  </a>' +
                         '</li>' 

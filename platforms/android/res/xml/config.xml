@@ -15,6 +15,7 @@
         <param name="android-package" value="NativeStorage" />
     </feature>
     <name>Gasto List</name>
+    <icon src="res/icon/logo.png" />
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
@@ -31,4 +32,6 @@
     <allow-intent href="geo:*" />
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#FF5722" />
 </widget>
