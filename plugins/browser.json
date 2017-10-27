@@ -18,6 +18,15 @@
         },
         "cordova-plugin-nativestorage": {
             "PACKAGE_NAME": "com.rafael.todolist7"
+        },
+        "cordova-plugin-websql": {
+            "PACKAGE_NAME": "com.trab.gastolist"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.trab.gastolist"
+        },
+        "cordova-plugin-firebase": {
+            "PACKAGE_NAME": "com.trab.gastolist"
         }
     },
     "dependent_plugins": {}

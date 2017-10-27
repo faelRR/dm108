@@ -1,68 +1,80 @@
 
 
-var GastoService = {
+var GastoService = {    
 
-    gastos: new Array(),
+    //gastos: new Array(),
+    // getAll: function(){      
 
-    getAll: function(){      
-       // return this.gastos;
+    //     // zera o vetor
+    //     gastos = Array();
 
-       var retorno = new Array();
+    //     var db = openDatabase("storage.db" , "1.0" , "banco" , 2 * 1024);    
+    //     db.transaction(function(tx) {
+    //         tx.executeSql("select * from gastos", [], 
+    //             function(tx, res) {
+    //                 console.log("res.rows.length: " + res.rows.length );                    
+    //                 // preenche o vetor
+    //                 for (i=0; i<= res.rows.length -1 ; i++){
+    //                     gasto = new Gasto(res.rows.item(i).descricao , res.rows.item(i).data , res.rows.item(i).valor);
+    //                     gasto.id = res.rows.item(i).id;
+    //                     gastos.push(gasto);
+    //                 }                    
+    //             }
+    //         );
+    //     } , onSuccessQuery , null);
 
-       NativeStorage.getItem("gastos" , 
-            function(obj){
-                retorno.push(obj);
-            } , 
-            function(error){
-                retorno = Array();
-            } 
-       )
+    //     return gastos;
 
-       return retorno;
-
-    },
-
-    getGastoByDescricao: function(titulo){
-        for (var i = 0; i < this.gastos.length; i++) {
-            var index = this.gastos[i].gasto.indexOf(gasto);
-            if (index > -1) {
-                return this.gastos[i];
-            }
-        }
-    },
+    // },
 
     add: function(descricao, data, valor) {
-        var gasto = new Gasto(descricao, data, valor);
-
-        NativeStorage.setItem("gastos" , gasto , 
-        function(obj){
-            alert("Adicionado com sucesso [" + descricao + "]");        
-        } , 
-        function(error){
-            alert("erro" + error);        
+        // persiste no banco de dados
+        var db = openDatabase("storage.db" , "1.0" , "banco" , 2 * 1024);
+        db.transaction(function(tx) {
+            tx.executeSql("INSERT INTO gastos (data, descricao , valor) VALUES (?,?,?)", [data, descricao , valor],                 
+                function(tx, res) {
+                    console.log("insertId: " + res.insertId );
+                    console.log("rowsAffected: " + res.rowsAffected );                                             
+                    alert("Adicionado com sucesso [" + descricao + "]");                    
+                }, function(e) {
+                    console.log("ERROR: " + e.message);
+                    alert("erro" + e.message);        
+                }
+            );
         });
-
-        //gasto.id = this.gastos.length;
-        //this.gastos.push(gasto);
     },
 
-    remove: function(descricao){
-        for (var i = this.gastos.length - 1; i >= 0; i--) {
-            var index = this.gastos[i].gasto.indexOf(descricao);
-            if (index > -1) {
-                this.gastos.splice(index, 1);
-            }
-        }
-        
+    remove: function(gasto){
+        // persiste no banco de dados
+        var db = openDatabase("storage.db" , "1.0" , "banco" , 2 * 1024);
+        db.transaction(function(tx) {
+            tx.executeSql("DELETE FROM gastos where id = ? ", [gasto.id],                 
+                function(tx, res) {
+                    console.log("rowsAffected: " + res.rowsAffected );                                             
+                    alert("Gasto removido com sucesso [" + gasto.descricao + "]");                    
+                }, function(e) {
+                    console.log("ERROR: " + e.message);
+                    alert("erro" + e.message);        
+                }
+            );
+        });           
     },
 
     edit: function(gasto){
-        for (var i = 0; i < this.gastos.length; i++) {
-            if (this.gastos[i].id == gasto.id) {
-                this.gastos[i] = gasto;
-                break;
-            }
-        }
+        // persiste no banco de dados
+        var db = openDatabase("storage.db" , "1.0" , "banco" , 2 * 1024);
+        db.transaction(function(tx) {
+            tx.executeSql("UPDATE gastos SET data = ? , descricao = ? , valor = ? where id = ? ", 
+                              [gasto.data, gasto.descricao , gasto.valor , gasto.id],                 
+                function(tx, res) {
+                    console.log("rowsAffected: " + res.rowsAffected );                                             
+                    alert("Gasto editado com sucesso [" + gasto.descricao + "]");                    
+                }, function(e) {
+                    console.log("ERROR: " + e.message);
+                    alert("erro" + e.message);        
+                }
+            );
+        });        
     }
 
 }
